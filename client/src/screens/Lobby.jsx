@@ -31,6 +31,7 @@ const LobbyScreen = () => {
       socket.off("room:join", handleJoinRoom);
     };
   }, [socket, handleJoinRoom]);
+
   return (
     <div>
       <h1>Lobby</h1>
