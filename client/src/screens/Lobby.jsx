@@ -58,3 +58,5 @@ const LobbyScreen = () => {
   );
 };
 
+export default LobbyScreen;
+
