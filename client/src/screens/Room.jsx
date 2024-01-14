@@ -85,3 +85,11 @@ const RoomPage = () => {
           setRemoteStream(remoteStream[0]);
         });
       }, []);
+
+      useEffect(() => {
+        socket.on("user:joined", handleUserJoined);
+        socket.on("incomming:call", handleIncommingCall);
+        socket.on("call:accepted", handleCallAccepted);
+        socket.on("peer:nego:needed", handleNegoNeedIncomming);
+        socket.on("peer:nego:final", handleNegoNeedFinal);
+    
