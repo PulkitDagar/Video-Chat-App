@@ -45,3 +45,13 @@ const RoomPage = () => {
           peer.peer.addTrack(track, myStream);
         }
       }, [myStream]);
+
+      const handleCallAccepted = useCallback(
+        ({ from, ans }) => {
+          peer.setLocalDescription(ans);
+          console.log("Call Accepted!");
+          sendStreams();
+        },
+        [sendStreams]
+      );
+    
