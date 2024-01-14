@@ -54,4 +54,10 @@ const RoomPage = () => {
         },
         [sendStreams]
       );
+
+      const handleNegoNeeded = useCallback(async () => {
+        const offer = await peer.getOffer();
+        socket.emit("peer:nego:needed", { offer, to: remoteSocketId });
+      }, [remoteSocketId, socket]);
+    
     
