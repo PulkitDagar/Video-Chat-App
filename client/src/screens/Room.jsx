@@ -66,3 +66,12 @@ const RoomPage = () => {
           peer.peer.removeEventListener("negotiationneeded", handleNegoNeeded);
         };
       }, [handleNegoNeeded]);
+
+      const handleNegoNeedIncomming = useCallback(
+        async ({ from, offer }) => {
+          const ans = await peer.getAnswer(offer);
+          socket.emit("peer:nego:done", { to: from, ans });
+        },
+        [socket]
+      );
+    
