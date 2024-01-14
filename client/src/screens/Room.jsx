@@ -60,4 +60,9 @@ const RoomPage = () => {
         socket.emit("peer:nego:needed", { offer, to: remoteSocketId });
       }, [remoteSocketId, socket]);
     
-    
+      useEffect(() => {
+        peer.peer.addEventListener("negotiationneeded", handleNegoNeeded);
+        return () => {
+          peer.peer.removeEventListener("negotiationneeded", handleNegoNeeded);
+        };
+      }, [handleNegoNeeded]);
